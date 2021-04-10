@@ -1,0 +1,58 @@
+{
+    "name": "@yaireo/relative-time",
+    "version": "1.0.0",
+    "homepage": "https://github.com/yairEO/relative-time",
+    "description": "javascript function to transform timestamp or date to local relative-time",
+    "keywords": [
+        "relative time",
+        "date",
+        "timestamp",
+        "javascript",
+        "js",
+        "local",
+        "locale"
+    ],
+    "license": "MIT",
+    "browserslist": [
+        ">1%",
+        "not dead",
+        "not ie < 11",
+        "not IE_Mob 11",
+        "not op_mini all"
+    ],
+    "np": {
+        "yarn": false,
+        "yolo": true
+    },
+    "scripts": {
+        "start": "npm run build",
+        "build": "terser relative-time.js --compress --mangle --output relative-time.min.js",
+        "clean": "rm -rf dist && npm run makedir",
+        "makedir": "mkdirp dist",
+        "header": "headr relative-time.min.js -o=relative-time.min.js --version --homepage",
+        "version": "npm run build && npm run header && git add .",
+        "prepublishOnly": "pkg-ok"
+    },
+    "author": {
+        "name": "Yair Even-Or",
+        "email": "vsync.design@gmail.com"
+    },
+    "main": "./relative-time.min.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yairEO/relative-time.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yaireo/relative-time/issues"
+    },
+    "files": [
+        "./relative-time.js",
+        "./relative-time.min.js"
+    ],
+    "devDependencies": {
+        "headr": "^0.0.4",
+        "mkdirp": "^1.0.4",
+        "rimraf": "^3.0.2",
+        "terser": "^5.6.1"
+    }
+}
