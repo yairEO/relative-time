@@ -46,8 +46,8 @@
         "url": "https://github.com/yaireo/relative-time/issues"
     },
     "files": [
-        "./relative-time.js",
-        "./relative-time.min.js"
+        "relative-time.js",
+        "relative-time.min.js"
     ],
     "devDependencies": {
         "headr": "^0.0.4",
