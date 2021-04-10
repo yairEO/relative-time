@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="readme-header.svg" width="320" height="160">
-<p>
+  <a href="/">
+    <img  src="readme-header.svg"/ >
+  </a>
+</p>
 <h3 align="center">Transform timestamp or date to local relative-time</h3>
 
 ---
