@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="/">
+  <a href="https://jsbin.com/vokawun/edit?html,js,console">
     <img  src="readme-header.svg"/ >
   </a>
 </p>
@@ -14,7 +14,7 @@
 
 ## Install:
 
-Use from CDN / Download from this repo / [NPM](https://www.npmjs.com/package/@yaireo/relative-time)
+Use from [CDN](https://unpkg.com/@yaireo/relative-time) / Download from this repo / [NPM](https://www.npmjs.com/package/@yaireo/relative-time)
 
 ```bash
 npm i @yaireo/relative-time -S
@@ -34,6 +34,8 @@ And use
 const relativeTime = new RelativeTime(); // defaults to OS locale
 const relativeTimeSpanish = new RelativeTime({ locale: 'es' }); // set locale to Spanish
 
-console.log(   relativeTime.from(new Date('2015'))  )
-console.log(   relativeTimeSpanish.from(new Date('2015'))  )
+console.log(   relativeTime.from(new Date('2015'))  )  // "6 years ago"
+console.log(   relativeTimeSpanish.from(new Date('2015'))  )  // "hace 6 años"
 ```
+
+[Live demo](https://jsbin.com/vokawun/edit?html,js,console)
