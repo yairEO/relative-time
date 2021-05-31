@@ -25,7 +25,7 @@ npm i @yaireo/relative-time -S
 Import CSS file via JS
 
 ```js
-import RelativeTime from '@yaireo/relative-Time'
+import RelativeTime from '@yaireo/relative-time'
 ```
 
 And use
