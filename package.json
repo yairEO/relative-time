@@ -1,6 +1,6 @@
 {
     "name": "@yaireo/relative-time",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "homepage": "https://github.com/yairEO/relative-time",
     "description": "javascript function to transform timestamp or date to local relative-time",
     "keywords": [
@@ -38,7 +38,7 @@
         "email": "vsync.design@gmail.com"
     },
     "main": "./relative-time.min.js",
-	"types": "./relative-time.d.ts",
+    "types": "./relative-time.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/yairEO/relative-time.git"
