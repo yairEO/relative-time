@@ -38,6 +38,7 @@
         "email": "vsync.design@gmail.com"
     },
     "main": "./relative-time.min.js",
+	"types": "./relative-time.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/yairEO/relative-time.git"
