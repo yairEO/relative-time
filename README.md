@@ -22,15 +22,9 @@ npm i @yaireo/relative-time -S
 
 ## Usage:
 
-Import CSS file via JS
-
 ```js
 import RelativeTime from '@yaireo/relative-time'
-```
 
-And use
-
-```js
 const relativeTime = new RelativeTime(); // defaults to OS locale
 const relativeTimeSpanish = new RelativeTime({ locale: 'es' }); // set locale to Spanish
 
