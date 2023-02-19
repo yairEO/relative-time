@@ -7,7 +7,7 @@
 
 ---
 <p align="center">
-Super lightweight (<strong><code title='minified'>< 500 bytes</code></strong>) 🍒 Uses <a title='MDN docs for Intl.RelativeTimeFormat' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat'>native browser API</a>
+Super lightweight (<strong><code title='minified'>< 500 bytes</code></strong>) &nbsp; <big>🕙</big> &nbsp; Uses <a title='MDN docs for Intl.RelativeTimeFormat' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat'>native browser API</a>
 </p>
 <br>
 
