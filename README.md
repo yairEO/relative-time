@@ -25,7 +25,6 @@ Import:
 
 ```js
 import RelativeTime from '@yaireo/relative-time'
-```
 
 And use:
 
