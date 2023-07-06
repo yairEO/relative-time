@@ -1,6 +1,6 @@
 {
     "name": "@yaireo/relative-time",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "homepage": "https://github.com/yairEO/relative-time",
     "description": "javascript function to transform timestamp or date to local relative-time",
     "keywords": [
@@ -13,9 +13,9 @@
         "locale"
     ],
     "license": "MIT",
-	"engines" : { 
-		"node" : ">=12.0.0"
-	},
+    "engines": {
+        "node": ">=12.0.0"
+    },
     "browserslist": [
         ">1%",
         "not dead",
@@ -52,7 +52,7 @@
     "files": [
         "relative-time.js",
         "relative-time.min.js",
-		"relative-time.d.ts"
+        "relative-time.d.ts"
     ],
     "devDependencies": {
         "headr": "^0.0.4",
