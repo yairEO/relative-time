@@ -48,7 +48,8 @@
     },
     "files": [
         "relative-time.js",
-        "relative-time.min.js"
+        "relative-time.min.js",
+		"relative-time.d.ts"
     ],
     "devDependencies": {
         "headr": "^0.0.4",
