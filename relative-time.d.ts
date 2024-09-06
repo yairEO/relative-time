@@ -10,7 +10,7 @@ interface Settings {
     /**
      * @default { numeric: 'auto' }
      */
-    options?: Intl.DateTimeFormatOptions;
+    options?: Intl.RelativeTimeFormatOptions;
 }
 
 declare class RelativeTime {
