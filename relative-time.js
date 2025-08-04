@@ -24,26 +24,38 @@
     options: { numeric: 'auto' }
   }
 
-  function RelativeTime( settings ){
+  function rtfFromSettings(settings) {
     settings = settings || {}
     settings = {
       locale: settings.locale || DEFAULTS.locale,
       options: {...DEFAULTS.options, ...settings.options}
     }
 
-    this.rtf = new Intl.RelativeTimeFormat(settings.locale, settings.options)
+    return new Intl.RelativeTimeFormat(settings.locale, settings.options)
+  }
+
+  function from(rtf, d1, d2) {
+    const elapsed = d1 - (d2 || new Date())
+
+    // "Math.abs" accounts for both "past" & "future" scenarios
+    for (let u in UNITS)
+      if (Math.abs(elapsed) > UNITS[u] || u == 'second')
+        return rtf.format(Math.round(elapsed/UNITS[u]), u)
+  }
+
+  function RelativeTime( settings ){
+    this.rtf = rtfFromSettings(settings)
   }
 
   RelativeTime.prototype = {
     // returns d1 relative to d2 time string in locale format
     from(d1, d2){
-      const elapsed = d1 - (d2 || new Date())
-
-      // "Math.abs" accounts for both "past" & "future" scenarios
-      for (let u in UNITS)
-        if (Math.abs(elapsed) > UNITS[u] || u == 'second')
-          return this.rtf.format(Math.round(elapsed/UNITS[u]), u)
+      return from(this.rtf, d1, d2)
     }
+  }
+
+  RelativeTime.from = function(d1, d2, settings){
+    return from(rtfFromSettings(settings), d1, d2)
   }
 
   return RelativeTime

@@ -16,6 +16,7 @@ interface Settings {
 declare class RelativeTime {
     constructor(settings?: Settings);
     from(d1: Date, d2?: Date): string;
+    static from(d1: Date, d2?: Date, settings?: Settings): string;
 }
 
 export = RelativeTime;
