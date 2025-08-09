@@ -1,0 +1,149 @@
+---
+description: create Git commit message for staged files - guidelines and best practices
+globs:
+alwaysApply: false
+---
+# Git Commit Message Guidelines
+
+## Mandatory Verification Checklist
+
+Before responding, you MUST explicitly acknowledge that you have completed each of these steps by including the text "I HAVE COMPLETED THE MANDATORY CHECKLIST:" followed by:
+
+1. [ ] I have read the ENTIRE rules file before beginning
+2. [ ] I have used `git diff --staged --name-only` to identify changed files
+3. [ ] I have used `git diff --staged | cat` to review all changes at once
+4. [ ] I have analyzed the purpose of changes across all files
+5. [ ] I have identified the proper type and scope for this commit
+6. [ ] I will format my commit message according to the required template
+7. [ ] I will Check for similar changes, and if detected, consolidate those changes, without specifying the files changes, and simply outline the changes in a broad manner. Only do step 8 if there are files with specific changes to them which weren't done similarly in other files.
+8. [ ] I will include file-specific analysis in the commit message body
+9. [ ] I reviewed the final output to be certain each list-item belongs to that list. if not, move it to the list of the file it belongs to
+
+If you have not completed any of these steps, stop immediately and complete them before proceeding.
+
+## Format Verification Steps
+
+To ensure correct format implementation, follow these steps:
+
+1. Implement a stricter checklist approach - read each section of rule files completely before responding
+2. For format-specific instructions, extract and follow the exact template provided
+3. Double-check your response against the rule specifications before submitting
+4. When specific formats are required, parse those requirements first before focusing on content
+
+Remember that correct formatting is equally important as content accuracy. The nested markdown format with triple backticks inside triple backticks is required for all commit message suggestions.
+
+
+## Efficiency Guidelines
+
+## Structure
+
+```
+<type>(<scope>): <subject>
+
+[optional body with per-file analysis]
+```
+
+## Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `refactor`: Code change that neither fixes a bug nor adds a feature
+- `style`: Changes that do not affect the meaning of the code
+- `docs`: Documentation only changes
+- `test`: Adding missing tests or correcting existing tests
+- `chore`: Changes to the build process or auxiliary tools
+- `perf`: Performance improvements
+
+## Best Practices
+
+1. First line:
+   - Maximum 72 characters
+   - No period at the end
+   - Capitalize first letter
+
+2. When to use body:
+   - Complex changes requiring explanation
+   - Breaking changes
+   - Major refactoring
+   - Security-related changes
+
+3. Multiple changes:
+   - Use bullet points in body
+   - Each point starts with a hyphen
+   - Indent with 2 spaces
+   - Be a bit more specific regarding changes in each file and how they are linked to each other. analyze all the files one by one AND as a whole.
+
+4. Technical specificity:
+   - Always specify function/method names when describing changes to them
+   - For parameter changes, specify the actual before and after state (e.g., "change paramName from Type1 to Type2")
+   - For conditional logic changes, be precise about what conditions were modified
+   - Avoid ambiguous phrases like "improve handling" without specific details
+   - Use technical language that accurately reflects the code changes
+
+## Output Format
+markdown within a codeblock, for easier copy-pasting as a commit message in GIT
+
+
+## Detailed File Analysis Format
+
+Commit messages should include a per-file breakdown of changes, following this structure:
+
+```
+refactor(UI): brief overall description of changes
+
+FileA.tsx:
+[follow previous section "Write message focusing on"]
+
+FileB.ts:
+[follow previous section "Write message focusing on"]
+```
+
+This format makes it easier to understand:
+- What changed in each file
+- The relationship between changes across files
+- The impact of the changes
+- When listing files, use only the filename (e.g., `FileA.tsx`) and not its full path.
+
+## Examples of Bad & Good Specificity
+
+Bad:
+```
+refactor(TimeChart): improve time units handling
+
+- Update function parameters
+- Fix conditional logic
+- Improve tests
+- Add TODO comment
+```
+
+## Follow these insturctions:
+
+1. Check staged files:
+   ```bash
+   git diff --staged --name-only
+   ```
+
+2. Review changes for each staged file:
+   ```bash
+   git diff --staged | cat
+   ```
+
+3. Analyze changes for:
+   - Primary purpose (determines type)
+   - Scope of changes
+   - Breaking changes
+   - Security implications
+   - Performance impact
+
+4. Write message focusing on:
+   - What changed
+   - Why it changed (if not obvious)
+   - Impact of change
+   - Avoid implementation details unless crucial
+   - For typescript-related changes in a file, simply write the filename and mention shorty if types were added or improved/modified
+   - For function signature changes, explicitly state the old and new parameters
+   - For dependency updates in package.json, list each updated package with its version change (e.g., "Update mkdirp from v1.0.4 to v3.0.1")
+
+5. Exclude the below from the GIT commit message output
+   - Code comments or their changes
+   - "TODO" comments
+   - imports (unless they where missing)

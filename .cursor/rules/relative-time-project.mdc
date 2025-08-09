@@ -1,0 +1,295 @@
+---
+alwaysApply: true
+---
+
+# Relative Time Project Rules
+
+This project is a lightweight JavaScript library for converting timestamps/dates to human-readable relative time strings using the native browser `Intl.RelativeTimeFormat` API.
+
+## Core Functionality
+
+The library provides a single `RelativeTime` class that formats dates relative to another date (defaults to current time).
+
+### Key Features
+- Internationalization support via `Intl.RelativeTimeFormat`
+- Bidirectional time formatting (past: "X ago", future: "in X")
+- Automatic unit selection (years, months, days, hours, minutes, seconds)
+- Locale-aware formatting
+- Universal Module Definition (UMD) pattern for broad compatibility
+
+## File Structure
+
+### Main Files
+- `relative-time.js` - Source code (50 lines)
+- `relative-time.min.js` - Minified production version (main entry point)
+- `relative-time.d.ts` - TypeScript definitions
+- `package.json` - Package configuration
+- `README.md` - Documentation
+
+### Build Files
+- Uses Terser for minification
+- Build command: `terser relative-time.js --compress --mangle --output relative-time.min.js`
+
+## Code Architecture
+
+### Constructor Pattern
+```javascript
+function RelativeTime(settings) {
+    // Merges user settings with defaults
+    // Creates Intl.RelativeTimeFormat instance
+}
+```
+
+### Settings Interface (TypeScript)
+```typescript
+interface Settings {
+    locale?: string;        // Default: browser locale
+    options?: Intl.RelativeTimeFormatOptions; // Default: { numeric: 'auto' }
+}
+```
+
+### Time Units (in milliseconds)
+```javascript
+const UNITS = {
+    year  : 24 * 60 * 60 * 1000 * 365,     // 31,536,000,000
+    month : 24 * 60 * 60 * 1000 * 365/12,  // 2,628,000,000
+    day   : 24 * 60 * 60 * 1000,           // 86,400,000
+    hour  : 60 * 60 * 1000,                // 3,600,000
+    minute: 60 * 1000,                     // 60,000
+    second: 1000                           // 1,000
+}
+```
+
+### Core Algorithm (`from` method)
+1. Calculate elapsed time: `d1 - (d2 || new Date())`
+2. Iterate through time units from largest to smallest
+3. Return first unit where `Math.abs(elapsed) > UNITS[u]` OR default to seconds
+4. Format using `this.rtf.format(Math.round(elapsed/UNITS[u]), u)`
+
+## Usage Patterns
+
+### Basic Usage
+```javascript
+const relativeTime = new RelativeTime();
+relativeTime.from(new Date('2015')); // "6 years ago"
+```
+
+### Static Method Usage (Convenience)
+```javascript
+// Static method - creates instance per call, no caching
+RelativeTime.from(new Date('2015')); // "6 years ago"
+RelativeTime.from(new Date('2015'), new Date(), 'es'); // "hace 6 años"
+```
+
+### Localized Usage
+```javascript
+const spanishTime = new RelativeTime({ locale: 'es' });
+spanishTime.from(new Date('2015')); // "hace 6 años"
+```
+
+### Custom Reference Date
+```javascript
+const rt = new RelativeTime();
+rt.from(new Date('2023-01-01'), new Date('2023-01-02')); // "1 day ago"
+```
+
+## Development Guidelines
+
+### Code Style
+- Uses semicolons consistently
+- Const for immutable values, let for variables
+- Object spread syntax for merging configurations
+- Prototype-based class definition
+- UMD wrapper for module compatibility
+
+### Browser Support
+- Requires `Intl.RelativeTimeFormat` support
+- Node.js >= 12.0.0
+- Browserslist: >1%, not dead, not IE < 11
+
+### Build Process
+- Source: `relative-time.js`
+- Minification: Terser with compress and mangle
+- Header injection for version info
+- TypeScript definitions included
+
+## Key Implementation Details
+
+### Time Calculation Logic
+- Uses millisecond differences for precision
+- `Math.abs()` handles both past and future scenarios
+- `Math.round()` provides integer values for formatting
+- Falls back to seconds for very small time differences
+
+### Internationalization
+- Leverages browser's native `Intl.RelativeTimeFormat`
+- Supports all locales supported by the browser
+- `numeric: 'auto'` enables natural language ("yesterday" vs "1 day ago")
+
+### Module Compatibility
+- AMD (RequireJS)
+- CommonJS (Node.js)
+- ES6 modules (via bundlers)
+- Global browser variable
+
+## Testing Considerations
+- Test with various locales
+- Test past and future dates
+- Test edge cases (same date, very large differences)
+- Verify cross-browser compatibility for `Intl.RelativeTimeFormat`
+
+## Performance Notes
+- Minimal computational overhead
+- No external dependencies
+- Leverages native browser APIs
+- Single calculation per format call
+- Efficient unit iteration (largest to smallest)# Relative Time Project Rules
+
+This project is a lightweight JavaScript library for converting timestamps/dates to human-readable relative time strings using the native browser `Intl.RelativeTimeFormat` API.
+
+## Project Overview
+
+**Package**: `@yaireo/relative-time` (v1.0.5)
+**Author**: Yair Even-Or
+**License**: MIT
+**Size**: < 500 bytes minified
+**Repository**: https://github.com/yairEO/relative-time
+
+## Core Functionality
+
+The library provides a single `RelativeTime` class that formats dates relative to another date (defaults to current time).
+
+### Key Features
+- Internationalization support via `Intl.RelativeTimeFormat`
+- Bidirectional time formatting (past: "X ago", future: "in X")
+- Automatic unit selection (years, months, days, hours, minutes, seconds)
+- Locale-aware formatting
+- Universal Module Definition (UMD) pattern for broad compatibility
+
+## File Structure
+
+### Main Files
+- `relative-time.js` - Source code (50 lines)
+- `relative-time.min.js` - Minified production version (main entry point)
+- `relative-time.d.ts` - TypeScript definitions
+- `package.json` - Package configuration
+- `README.md` - Documentation
+
+### Build Files
+- Uses Terser for minification
+- Build command: `terser relative-time.js --compress --mangle --output relative-time.min.js`
+
+## Code Architecture
+
+### Constructor Pattern
+```javascript
+function RelativeTime(settings) {
+    // Merges user settings with defaults
+    // Creates Intl.RelativeTimeFormat instance
+}
+```
+
+### Settings Interface (TypeScript)
+```typescript
+interface Settings {
+    locale?: string;        // Default: browser locale
+    options?: Intl.RelativeTimeFormatOptions; // Default: { numeric: 'auto' }
+}
+```
+
+### Time Units (in milliseconds)
+```javascript
+const UNITS = {
+    year  : 24 * 60 * 60 * 1000 * 365,     // 31,536,000,000
+    month : 24 * 60 * 60 * 1000 * 365/12,  // 2,628,000,000
+    day   : 24 * 60 * 60 * 1000,           // 86,400,000
+    hour  : 60 * 60 * 1000,                // 3,600,000
+    minute: 60 * 1000,                     // 60,000
+    second: 1000                           // 1,000
+}
+```
+
+### Core Algorithm (`from` method)
+1. Calculate elapsed time: `d1 - (d2 || new Date())`
+2. Iterate through time units from largest to smallest
+3. Return first unit where `Math.abs(elapsed) > UNITS[u]` OR default to seconds
+4. Format using `this.rtf.format(Math.round(elapsed/UNITS[u]), u)`
+
+## Usage Patterns
+
+### Basic Usage
+```javascript
+const relativeTime = new RelativeTime();
+relativeTime.from(new Date('2015')); // "6 years ago"
+```
+
+### Static Method Usage (Convenience)
+```javascript
+// Static method - creates instance per call, no caching
+RelativeTime.from(new Date('2015')); // "6 years ago"
+RelativeTime.from(new Date('2015'), new Date(), 'es'); // "hace 6 años"
+```
+
+### Localized Usage
+```javascript
+const spanishTime = new RelativeTime({ locale: 'es' });
+spanishTime.from(new Date('2015')); // "hace 6 años"
+```
+
+### Custom Reference Date
+```javascript
+const rt = new RelativeTime();
+rt.from(new Date('2023-01-01'), new Date('2023-01-02')); // "1 day ago"
+```
+
+## Development Guidelines
+
+### Code Style
+- Uses semicolons consistently
+- Const for immutable values, let for variables
+- Object spread syntax for merging configurations
+- Prototype-based class definition
+- UMD wrapper for module compatibility
+
+### Browser Support
+- Requires `Intl.RelativeTimeFormat` support
+- Node.js >= 12.0.0
+- Browserslist: >1%, not dead, not IE < 11
+
+### Build Process
+- Source: `relative-time.js`
+- Minification: Terser with compress and mangle
+- Header injection for version info
+- TypeScript definitions included
+
+## Key Implementation Details
+
+### Time Calculation Logic
+- Uses millisecond differences for precision
+- `Math.abs()` handles both past and future scenarios
+- `Math.round()` provides integer values for formatting
+- Falls back to seconds for very small time differences
+
+### Internationalization
+- Leverages browser's native `Intl.RelativeTimeFormat`
+- Supports all locales supported by the browser
+- `numeric: 'auto'` enables natural language ("yesterday" vs "1 day ago")
+
+### Module Compatibility
+- AMD (RequireJS)
+- CommonJS (Node.js)
+- ES6 modules (via bundlers)
+- Global browser variable
+
+## Testing Considerations
+- Test with various locales
+- Test past and future dates
+- Test edge cases (same date, very large differences)
+- Verify cross-browser compatibility for `Intl.RelativeTimeFormat`
+
+## Performance Notes
+- Minimal computational overhead
+- No external dependencies
+- Leverages native browser APIs
+- Single calculation per format call
+- Efficient unit iteration (largest to smallest)
