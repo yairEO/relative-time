@@ -13,6 +13,7 @@
         "locale"
     ],
     "license": "MIT",
+    "packageManager": "^pnpm@10.0.0",
     "browserslist": [
         ">1%",
         "not dead",
@@ -21,7 +22,7 @@
         "not op_mini all"
     ],
     "np": {
-        "pnpm": true
+        "cleanup": false
     },
     "scripts": {
         "start": "pnpm build",
