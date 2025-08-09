@@ -32,8 +32,14 @@ And use:
 const relativeTime = new RelativeTime(); // defaults to OS locale
 const relativeTimeSpanish = new RelativeTime({ locale: 'es' }); // set Spanish locale
 
-console.log(   relativeTime.from(new Date('2015'))  )  // "6 years ago"
-console.log(   relativeTimeSpanish.from(new Date('2015'))  )  // "hace 6 años"
+console.log(   relativeTime.from(new Date('2020'))  )  // "6 years ago"
+console.log(   relativeTimeSpanish.from(new Date('2020'))  )  // "hace 6 años"
+```
+
+Or without instanciation:
+
+```js
+console.log(RelativeTime.from(new Date('2032'))) // "in 6 years"
 ```
 
 [Live demo](https://jsbin.com/vokawun/edit?html,js,console)
