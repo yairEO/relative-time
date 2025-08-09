@@ -13,9 +13,6 @@
         "locale"
     ],
     "license": "MIT",
-    "engines": {
-        "node": ">=22.0.0"
-    },
     "browserslist": [
         ">1%",
         "not dead",
