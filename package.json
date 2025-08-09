@@ -24,22 +24,19 @@
         "not op_mini all"
     ],
     "np": {
-        "yarn": false,
-        "yolo": true
+        "yarn": false
     },
     "scripts": {
-        "start": "npm run build",
+        "start": "pnpm build",
         "build": "terser relative-time.js --compress --mangle --output relative-time.min.js",
-        "clean": "rm -rf dist && npm run makedir",
+        "test": "node --test relative-time.test.js",
+        "clean": "rm -rf dist && pnpm makedir",
         "makedir": "mkdirp dist",
-        "header": "headr relative-time.min.js -o=relative-time.min.js --version --homepage",
-        "version": "npm run build && npm run header && git add .",
+        "header": "headr relative-time.min.js -o=relative-time.min.js --version --author --homepage",
+        "version": "pnpm build && pnpm header && git add .",
         "prepublishOnly": "pkg-ok"
     },
-    "author": {
-        "name": "Yair Even-Or",
-        "email": "vsync.design@gmail.com"
-    },
+    "author": "Yair Even-Or <vsync.design@gmail.com>",
     "main": "./relative-time.min.js",
     "types": "./relative-time.d.ts",
     "repository": {
@@ -56,8 +53,8 @@
     ],
     "devDependencies": {
         "headr": "^0.0.4",
-        "mkdirp": "^1.0.4",
-        "rimraf": "^3.0.2",
-        "terser": "^5.6.1"
+        "mkdirp": "^3.0.1",
+        "rimraf": "^6.0.1",
+        "terser": "^5.43.1"
     }
 }
