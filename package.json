@@ -24,7 +24,7 @@
         "not op_mini all"
     ],
     "np": {
-        "yarn": false
+        "pnpm": true
     },
     "scripts": {
         "start": "pnpm build",
