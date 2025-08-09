@@ -7,7 +7,7 @@
 
 ---
 <p align="center">
-Super lightweight (<strong><code title='minified'>< 500 bytes</code></strong>) &nbsp; <big>🕙</big> &nbsp; Uses <a title='MDN docs for Intl.RelativeTimeFormat' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat'>native browser API</a>
+Super lightweight (<strong><code title='minified'>< 500 bytes</code></strong>) &nbsp; <big>🕙</big> &nbsp; Uses <a title='MDN docs for Intl.RelativeTimeFormat' href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat'>native browser API</a> & Supported in Node.js LTS
 </p>
 <br>
 
@@ -32,14 +32,14 @@ And use:
 const relativeTime = new RelativeTime(); // defaults to OS locale
 const relativeTimeSpanish = new RelativeTime({ locale: 'es' }); // set Spanish locale
 
-console.log(   relativeTime.from(new Date('2020'))  )  // "6 years ago"
-console.log(   relativeTimeSpanish.from(new Date('2020'))  )  // "hace 6 años"
+console.log(   relativeTime.from(new Date('2020'))  )  // ".. years ago"
+console.log(   relativeTimeSpanish.from(new Date('2020'))  )  // "hace .. años"
 ```
 
 Or without instanciation:
 
 ```js
-console.log(RelativeTime.from(new Date('2032'))) // "in 6 years"
+console.log(RelativeTime.from(new Date('2032'))) // "in .. years"
 ```
 
 [Live demo](https://jsbin.com/vokawun/edit?html,js,console)
