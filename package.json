@@ -13,7 +13,7 @@
         "locale"
     ],
     "license": "MIT",
-    "packageManager": "^pnpm@10.0.0",
+    "packageManager": "pnpm@10.14.0",
     "browserslist": [
         ">1%",
         "not dead",
