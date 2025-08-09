@@ -46,5 +46,11 @@
     }
   }
 
+  // Static method for convenience - creates instance per call
+  RelativeTime.from = function(d1, d2, locale) {
+    const instance = new RelativeTime(locale ? { locale } : {})
+    return instance.from(d1, d2)
+  }
+
   return RelativeTime
 }));
